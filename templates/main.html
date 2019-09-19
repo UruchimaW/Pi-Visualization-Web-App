@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/static/script.js"></script>
+
+     <title>Pi Visualization</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">Pi Visualization</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/aboutus">About Us</a>
+      </div>
+    </div>
+    </nav>
+
+    <div class="container-fluid" style="background:black;height:100vh;">
+      <!-- <video autoplay muted loop id="myVideo" style="height:100vh;opacity:.5;">
+        <source src="apple.mp4" type="video/mp4">
+    </video> -->
+      <div class="row" style="height:100vh;">
+        <div class="col align-self-center" data-aos="fade" data-aos-duration="1400" style="text-align:center;color:white;">
+        <h1> Time to see some Pi. </h1>
+        </div>
+      </div>
+    </div>
+
+<div id="piBackground" class="container-fluid" style="background:white;">
+  <div class="row" style="height:100vh;">
+    <div class="col align-self-center" data-aos="fade-up" data-aos="fade-out" style="text-align:center;">
+      <h1 id="pi_numbers" class="text-break">This is Pi like you've seen it before.</h1>
+    </div>
+  </div>
+  <div class="row" style="height:10px;" data-aos="fade-right">
+    <div class="col" id="first" style="background:rgb(34, 116, 255);">
+    </div>
+    <div class="col" id="second" style="background:rgb(245, 144, 51);">
+    </div>
+    <div class="col" id="third" style="background:rgb(245, 233, 77);">
+    </div>
+    <div class="col" id="fourth" style="background:rgb(240, 53, 50);">
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="height:100vh;">
+  <div class="row align-items-center" style="height:100vh;">
+    <div class"col-sm" style="width:50%;">
+      <div class="row align-content-center">
+        <div class="col">
+          <h1 style="text-align:center;">This is iPhone</h1>
+        </div>
+      </div>
+      <div class="row" style="height:10px;">
+        <div class="col">
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          The most powerful iPhone just got better. With the all new A11 Bionic chip, iPhone is 50% faster and can keep up with the
+          demanding tasks.
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="text-center">
+      <img src="/static/iphone.png" class="img-fluid" alt="Responsive image" data-aos="fade-up" data-aos-duration="1400">
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="conatiner-fluid" style="background:black;height:100vh;">
+
+</div>
+
+
+
+<div class="col align-self-center" style="text-align:center;color:white;">
+  <div id="searchBar">
+          <input id="queryBox" type="text" name="searchQuery" placeholder="Type in a range">
+          <button id="submit">Let's go</button>
+      </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+    </div>
+  </div>
+</div>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col align-self-center" style="text-align:center;">
+    <h1 id="pi_number"> Time to see some Pi. </h1>
+    </div>
+  </div>
+</div>
+
+<!-- Begin Script Libraries -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
