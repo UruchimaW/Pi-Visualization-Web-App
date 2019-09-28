@@ -47,11 +47,10 @@ var secondHalf = "";
 
 function piJoiner(){
   first = holder.slice(0,1);
-  secondHalf = holder.slice(1)
+  secondHalf = holder.slice(1);
   console.log(first + "." + secondHalf);
   holder = first + "." + secondHalf;
 }
-
 
 
 var i = 0;
@@ -71,44 +70,25 @@ function bigTypeWriter(){
   document.getElementById("pi_numbers").innerHTML = "";
   typeWriter();
 }
-// Here we are turning the string delivered by the API into numbers
-testdata = holder
-function dataVisualization(){
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var chart = new Chart(ctx, {
-      // The type of chart we want to create
-      type: 'line',
 
-      // The data for our dataset
-      data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-              label: 'My First dataset',
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: testdata
-          }]
-      },
 
-      // Configuration options go here
-      options: {}
-  });
-
-  function addData(chart, label, data) {
-      chart.data.labels.push(label);
-      chart.data.datasets.forEach((dataset) => {
-          dataset.data.push(data);
-      });
-      chart.update();
-  }
-  function dataAddertest(){
-  two = ['two'];
-  stuffData = [2];
-  addData(myChart,two,stuffData);
-  }
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
 }
 
 
+function dataAddertest(){
+  var piArray = holder.slice('');
+  for (i=0;i<piArray.length;i++){
+    number = piArray[i];
+    setTimeout(addData(chart,number,number),8000);
+    // addData(chart,number,number);
+  }
+}
 // adding data to the chart lets see if this works
 
 
@@ -130,6 +110,4 @@ window.addEventListener('load', () => {
   document.addEventListener('aos:in', ({ detail }) => {
   console.log('animated in', detail);
 });
-dataVisualization();
-
 });
