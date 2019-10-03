@@ -1,5 +1,5 @@
 var holder;
-
+var visualPi;
 function pi (){
   console.log("this is workimg to this point");
   $.get("https://api.pi.delivery/v1/pi", {
@@ -10,14 +10,6 @@ function pi (){
   holder = data.content;
 });
 }
-
-function setter(){
-  console.log(holder);
-  var given_number = document.querySelector('#pi_numbers');
-  given_number.innerHTML = holder;
-  console.log(holder);
-}
-
 
 pi();
 
@@ -49,7 +41,7 @@ function piJoiner(){
   first = holder.slice(0,1);
   secondHalf = holder.slice(1);
   console.log(first + "." + secondHalf);
-  holder = first + "." + secondHalf;
+  visualPi = first + "." + secondHalf;
 }
 
 
@@ -57,18 +49,21 @@ var i = 0;
 var speed = 30;
 
 function typeWriter() {
-  console.log(holder);
-  if (i < holder.length) {
-    document.getElementById("pi_numbers").innerHTML += holder.charAt(i);
+  console.log(visualPi);
+  if (i < visualPi.length) {
+    document.getElementById("pi_numbers").innerHTML += visualPi.charAt(i);
     i++;
     setTimeout(typeWriter, speed);
   }
 }
-
+var typeWriterFired = 0;
 function bigTypeWriter(){
   piJoiner();
-  document.getElementById("pi_numbers").innerHTML = "";
-  typeWriter();
+  if (typeWriterFired == 0){
+    typeWriterFired = 1;
+    document.getElementById("pi_numbers").innerHTML = "";
+    typeWriter();
+  }
 }
 
 
@@ -85,7 +80,7 @@ function dataAddertest(){
   var piArray = holder.slice('');
   for (i=0;i<piArray.length;i++){
     number = piArray[i];
-    setTimeout(addData(chart,number,number),8000);
+    setTimeout(addData(chart,number,number), 8000);
     // addData(chart,number,number);
   }
 }
