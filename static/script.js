@@ -83,8 +83,9 @@ function timerTest(i,piArray){
 
 
 function dataAddertest(){
-  var piArray = holder.slice('');
-  for (i=0;i<piArray.length;i++){
+  var test = holder;
+  var piArray = test.slice('');
+  for (var i=0;i<piArray.length;i++){
     // console.log(piArray[i]);
     timerTest(i,piArray);
     // addData(chart,number,number);
