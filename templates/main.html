@@ -61,7 +61,7 @@
   </div> -->
 </div>
 
-<div class="container-fluid" style="background:black;">
+<div class="container-fluid" style="background:white;">
   <div class="row" style="height:100vh;">
     <div class="col align-self-center">
       <div class="chart-container">
@@ -90,8 +90,22 @@ var chart = new Chart(ctx, {
         labels: [],
         datasets: [{
             label: '0',
-            backgroundColor: 'rgb(90, 148, 223)',
-            data: []
+            // backgroundColor: 'rgb(90, 148, 223)',
+            data: [],
+            backgroundColor: function(context) {
+              var index = context.dataIndex;
+              var value = context.dataset.data[index];
+              return value == 1 ? 'orange' :
+              value == 2 ? 'blue':
+              value == 3 ? 'purple':
+              value == 4 ? 'rgb(221, 122, 51)':
+              value == 5 ? 'brown':
+              value == 6 ? 'brown':
+              value == 7 ? 'brown':
+              value == 8 ? 'brown':
+              value == 9 ? 'brown':
+              index % 2 ? 'blue' : 'green';
+        }
         }
       ]
     },
