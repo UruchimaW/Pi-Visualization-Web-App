@@ -75,12 +75,18 @@ function addData(chart, label, data) {
     chart.update();
 }
 
+function timerTest(i,piArray){
+  setTimeout(function(){
+    addData(chart,piArray[i],piArray[i]);
+  }, 2000);
+}
+
 
 function dataAddertest(){
   var piArray = holder.slice('');
   for (i=0;i<piArray.length;i++){
-    number = piArray[i];
-    setTimeout(addData(chart,number,number), 8000);
+    // console.log(piArray[i]);
+    timerTest(i,piArray);
     // addData(chart,number,number);
   }
 }
