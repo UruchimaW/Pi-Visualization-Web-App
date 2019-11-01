@@ -7,10 +7,8 @@ handlers:
   static_dir: static/styles
 - url: /static.*
   static_dir: static
-  login: required
 - url: /.*
   script: main.app
-  login: required
 
 libraries:
 - name: jinja2

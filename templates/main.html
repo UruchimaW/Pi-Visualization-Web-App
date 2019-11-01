@@ -35,7 +35,7 @@
     </video> -->
       <div class="row" style="height:100vh;">
         <div class="col align-self-center" data-aos="fade" data-aos-duration="1400" style="text-align:center;color:white;">
-        <h1> Time to see some Pi. </h1>
+        <h1 id="detail"> Time to see some Pi. </h1>
         </div>
       </div>
     </div>
@@ -43,9 +43,10 @@
 <div id="piBackground" class="container-fluid" style="background:white;">
   <div class="row" style="height:100vh;">
     <div class="col align-self-center" data-aos="fade-up" data-aos="fade-out" style="text-align:center;" id="trigger-right">
-      <h1 id="pi_numbers" class="text-break">This is Pi like you've seen it before.</h1>
+      <h1 id="pi_numbers" class="text-break" style="font-size:2.7vw;">This is Pi like you've seen it before.</h1>
     </div>
   </div>
+  <!-- potentially bring this functionality back -->
   <!-- <div class="row" style="height:10px;" data-aos="fade-right"
         data-aos-anchor="#trigger-right"
        data-aos-anchor-placement="top-center"
@@ -61,7 +62,7 @@
   </div> -->
 </div>
 
-<div class="container-fluid" style="background:white;">
+<div class="container-fluid" style="background:rgb(0, 24, 69);">
   <div class="row" style="height:100vh;">
     <div class="col align-self-center">
       <div class="chart-container">
@@ -75,6 +76,22 @@
   <div class="row">
     <div class="col align-self-center" style="text-align:center;">
     <h1 id="pi_number"> Time to see some Pi. </h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="height:100vh;background:rgb(245, 174, 81);">
+  <div class="row">
+    <div class="col">
+      <div class="chart-container">
+          <canvas id="secondChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" style="text-align:right;">
+      <button type="button" id="polarAdder" class="btn btn-primary">Just Click Here</button>
     </div>
   </div>
 </div>
@@ -112,10 +129,33 @@ var chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {
+      legend: {
+        display: false,
+      },
       animation:{
         duration:5000,
       }
     }
+});
+</script>
+
+<script> var ctx = document.getElementById('secondChart').getContext('2d');
+ var second = new Chart(ctx, {
+       data: {
+        datasets: [{
+            data: [3,1,4,]
+        }],
+    },
+       type: 'polarArea',
+       options: {
+         legend: {
+           display:false,
+         },
+         canvas: {
+           responsive: false,
+         },
+       }
+
 });
 </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

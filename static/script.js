@@ -1,5 +1,8 @@
 var holder;
 var visualPi;
+// this is where there will be a global array of the first 1000 digits of pi
+var slicedFirst;
+//
 function pi (){
   console.log("this is workimg to this point");
   $.get("https://api.pi.delivery/v1/pi", {
@@ -13,26 +16,27 @@ function pi (){
 
 pi();
 
+// This is corresponds to the changing color bar for that has been disbaled
 
-function changeOne(){
-  console.log('works1');
-  document.querySelector("#piBackground").style.background = "rgb(34, 116, 255)";
-}
-
-function changeTwo(){
-  console.log('works1');
-  document.querySelector("#piBackground").style.background = "rgb(245, 144, 51)";
-}
-
-function changeThree(){
-  console.log('works1');
-  document.querySelector("#piBackground").style.background = "rgb(245, 233, 77)";
-}
-
-function changeFour(){
-  console.log('works1');
-  document.querySelector("#piBackground").style.background = "rgb(240, 53, 50)";
-}
+// function changeOne(){
+//   console.log('works1');
+//   document.querySelector("#piBackground").style.background = "rgb(34, 116, 255)";
+// }
+//
+// function changeTwo(){
+//   console.log('works1');
+//   document.querySelector("#piBackground").style.background = "rgb(245, 144, 51)";
+// }
+//
+// function changeThree(){
+//   console.log('works1');
+//   document.querySelector("#piBackground").style.background = "rgb(245, 233, 77)";
+// }
+//
+// function changeFour(){
+//   console.log('works1');
+//   document.querySelector("#piBackground").style.background = "rgb(240, 53, 50)";
+// }
 
 var first = "";
 var secondHalf = "";
@@ -91,16 +95,20 @@ function dataAddertest(){
     // addData(chart,number,number);
   }
 }
-// adding data to the chart lets see if this works
-
-
-// Here we are adding data
-
-// this is code to sort out a dictionary of all the numbers
+var areaCounter = 3 ;
+//Here is the adding data stuff for the
+function barAdder(){
+  var piArray = holder.slice('');
+  addData(second,piArray[areaCounter],piArray[areaCounter]);
+  areaCounter ++;
+}
 
 window.addEventListener('load', () => {
   document.querySelector('#pi_numbers').addEventListener("click", () => {
     bigTypeWriter();
+  });
+  document.querySelector('#polarAdder').addEventListener("click", () => {
+    barAdder();
   });
   document.querySelector('#pi_number').addEventListener("click", () => {
     dataAddertest();
