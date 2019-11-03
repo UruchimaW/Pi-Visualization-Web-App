@@ -17,7 +17,10 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">Pi Visualization</a>
+      <a class="navbar-brand">
+        <img src="/static/PiLogo.png" class="d-inline-block align-top" width="30" height="30" alt="">
+
+        Pi Visualization</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -35,7 +38,7 @@
     </video> -->
       <div class="row" style="height:100vh;">
         <div class="col align-self-center" data-aos="fade" data-aos-duration="1400" style="text-align:center;color:white;">
-        <h1 id="detail"> Time to see some Pi. </h1>
+        <h1> Time to see some Pi. </h1>
         </div>
       </div>
     </div>
@@ -43,7 +46,7 @@
 <div id="piBackground" class="container-fluid" style="background:white;">
   <div class="row" style="height:100vh;">
     <div class="col align-self-center" data-aos="fade-up" data-aos="fade-out" style="text-align:center;" id="trigger-right">
-      <h1 id="pi_numbers" class="text-break" style="font-size:2.7vw;">This is Pi like you've seen it before.</h1>
+      <h1 id="pi_numbers" class="text-break" style="font-size:2.7;">This is Pi like you've seen it before.</h1>
     </div>
   </div>
   <!-- potentially bring this functionality back -->
@@ -63,24 +66,28 @@
 </div>
 
 <div class="container-fluid" style="background:rgb(0, 24, 69);">
-  <div class="row" style="height:100vh;">
+  <div class="row" style="height:100vh">
     <div class="col align-self-center">
-      <div class="chart-container">
-          <canvas id="myChart"></canvas>
+      <!-- <div class="row">
+        <div class="col" style="text-align:center;">
+          <h1 style="color:white;">Flow in to Pi</h1>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col">
+            <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align:center;">
+          <button type="button" id="pi_number" class="btn btn-primary">Flow</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid" >
-  <div class="row">
-    <div class="col align-self-center" style="text-align:center;">
-    <h1 id="pi_number"> Time to see some Pi. </h1>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid" style="height:100vh;background:rgb(245, 174, 81);">
+<div class="container-fluid" style="height:100vh;background:rgb(34, 76, 135);">
   <div class="row">
     <div class="col">
       <div class="chart-container">
@@ -90,7 +97,7 @@
   </div>
 
   <div class="row">
-    <div class="col" style="text-align:right;">
+    <div class="col" style="text-align:left;">
       <button type="button" id="polarAdder" class="btn btn-primary">Just Click Here</button>
     </div>
   </div>
@@ -143,16 +150,31 @@ var chart = new Chart(ctx, {
  var second = new Chart(ctx, {
        data: {
         datasets: [{
-            data: [3,1,4,]
+            data: [3,1,4,],
+        //     backgroundColor: function(context) {
+        //       var index = context.dataIndex;
+        //       var value = context.dataset.data[index];
+        //       return value == 1 ? 'black' :
+        //       value == 2 ? 'black':
+        //       value == 3 ? 'white':
+        //       value == 4 ? 'white':
+        //       value == 5 ? 'yellow':
+        //       value == 6 ? 'yellow':
+        //       value == 7 ? 'yellow':
+        //       value == 8 ? 'yellow':
+        //       value == 9 ? 'yellow':
+        //       index % 2 ? 'blue' : 'green';
+        // },
         }],
     },
+
        type: 'polarArea',
        options: {
          legend: {
            display:false,
          },
          canvas: {
-           responsive: false,
+           responsive: true,
          },
        }
 
