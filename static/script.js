@@ -3,6 +3,7 @@ var visualPi;
 // this is where there will be a global array of the first 1000 digits of pi
 var slicedFirst;
 //
+//will migrate to using ajax instead of this.
 function pi (){
   console.log("this is workimg to this point");
   $.get("https://api.pi.delivery/v1/pi", {
