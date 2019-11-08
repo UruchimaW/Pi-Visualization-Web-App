@@ -106,17 +106,17 @@ function barAdder(){
 // test
 //3141592
 function guessAdder(sliderValue) {
-  sliderValue = parseInt(sliderValue)
-  var piArray = holder.slice('');
-  console.log(sliderValue);
+  // sliderValue = parseInt(sliderValue)
+  // var piArray = holder.slice('');
+  // console.log(sliderValue);
   // console.log(sliderValue+1);
   // console.log(sliderValue-1);
-  var leftString = holder.slice((sliderValue-4),(sliderValue-1));
-  var rightString = holder.slice((sliderValue),(sliderValue+3));
-  console.log(rightString);
-  document.getElementById("leftGuess").innerHTML = leftString;
-  document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
-  document.getElementById("rightGuess").innerHTML = rightString;
+  // var leftString = holder.slice((sliderValue-4),(sliderValue-1));
+  // var rightString = holder.slice((sliderValue),(sliderValue+3));
+  // console.log(rightString);
+  // document.getElementById("leftGuess").innerHTML = leftString;
+  // document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
+  // document.getElementById("rightGuess").innerHTML = rightString;
 
 
 //Updating slider value dynamically
@@ -125,6 +125,28 @@ function guessAdder(sliderValue) {
 }
 
 window.addEventListener('load', () => {
+  var slider = document.getElementById("formControlRange");
+  var output = document.getElementById("teststuff");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+    sliderValue = parseInt(this.value);
+    var piArray = holder.slice('');
+    console.log(sliderValue);
+    // console.log(sliderValue+1);
+    // console.log(sliderValue-1);
+    var leftString = holder.slice((sliderValue-4),(sliderValue-1));
+    var rightString = holder.slice((sliderValue),(sliderValue+3));
+    console.log(rightString);
+    document.getElementById("leftGuess").innerHTML = leftString;
+    document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
+    document.getElementById("rightGuess").innerHTML = rightString;
+
+  }
+
+
+
   document.querySelector('#pi_numbers').addEventListener("click", () => {
     bigTypeWriter();
   });
