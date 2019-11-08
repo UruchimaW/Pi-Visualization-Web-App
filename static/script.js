@@ -103,10 +103,36 @@ function barAdder(){
   addData(second,piArray[areaCounter],piArray[areaCounter]);
   areaCounter ++;
 }
+// test
+//3141592
+function guessAdder(sliderValue) {
+  sliderValue = parseInt(sliderValue)
+  var piArray = holder.slice('');
+  console.log(sliderValue);
+  // console.log(sliderValue+1);
+  // console.log(sliderValue-1);
+  var leftString = holder.slice((sliderValue-4),(sliderValue-1));
+  var rightString = holder.slice((sliderValue),(sliderValue+3));
+  console.log(rightString);
+  document.getElementById("leftGuess").innerHTML = leftString;
+  document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
+  document.getElementById("rightGuess").innerHTML = rightString;
+
+
+//Updating slider value dynamically
+
+
+}
 
 window.addEventListener('load', () => {
   document.querySelector('#pi_numbers').addEventListener("click", () => {
     bigTypeWriter();
+  });
+  document.querySelector('#secondtest').addEventListener("click", () => {
+    var sliderValue = document.getElementById("formControlRange").value;
+    guessAdder(sliderValue);
+    // document.getElementById("teststuff").innerHTML = sliderValue;
+
   });
   document.querySelector('#polarAdder').addEventListener("click", () => {
     barAdder();

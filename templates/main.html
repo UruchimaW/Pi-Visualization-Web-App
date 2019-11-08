@@ -66,11 +66,7 @@
 <div class="container-fluid" style="background:rgb(0, 24, 69);">
   <div class="row" style="height:100vh">
     <div class="col align-self-center">
-      <!-- <div class="row">
-        <div class="col" style="text-align:center;">
-          <h1 style="color:white;">Flow in to Pi</h1>
-        </div>
-      </div> -->
+
       <div class="row">
         <div class="col">
             <canvas id="myChart"></canvas>
@@ -102,20 +98,21 @@
 </div>
 
 <!-- Will add functionality to guess a number of Pi at a certain range -->
-<div class="container-fluid" style="background:rgb(251, 147, 95);">
+<div class="container-fluid" style="background:black;color:white">
   <div class="row" style="height:100vh">
     <div class="col align-self-center">
       <div class="row">
         <div class="col align-self-center">
-          <h1 style="text-align:center;">Guess the Number at Pi index </h1>
+          <h1 id="secondtest" style="text-align:center;">Guess the Number at Pi index </h1>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <form>
             <div class="form-group">
-              <label for="formControlRange">Example Range input</label>
-              <input type="range" class="form-control-range" id="formControlRange">
+              <label for="formControlRange">Slide</label>
+              <input type="range" class="form-control-range"  min="1" max="1000" id="formControlRange">
+              <p id="teststuff"></p>
             </div>
           </form>
         </div>
@@ -123,13 +120,22 @@
     </div>
     <div class="col align-self-center">
 
-      <p style="text-align:center;"><span style="font-size:60px;opacity:.5">223</span><span style="font-size:100px;">3</span><span style="font-size:60px;opacity:.5">343</span>
+      <p style="text-align:center;"><span id="leftGuess" style="font-size:60px;opacity:.5">223</span><span id="middleGuess" style="font-size:100px;">3</span><span id="rightGuess" style="font-size:60px;opacity:.5">343</span>
       </p>
 
     </div>
   </div>
 </div>
 <!-- Begin Script Libraries -->
+<script>
+var slider = document.getElementById("formControlRange");
+var output = document.getElementById("teststuff");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
 <script> var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
