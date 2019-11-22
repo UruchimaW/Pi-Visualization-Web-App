@@ -10,7 +10,6 @@ function pi (){
   start: 0,
   numberOfDigits: 1000
 }, function(data) {
-  console.log(data);
   holder = data.content;
 });
 }
@@ -54,7 +53,6 @@ var i = 0;
 var speed = 30;
 
 function typeWriter() {
-  console.log(visualPi);
   if (i < visualPi.length) {
     document.getElementById("pi_numbers").innerHTML += visualPi.charAt(i);
     i++;
@@ -103,26 +101,108 @@ function barAdder(){
   addData(second,piArray[areaCounter],piArray[areaCounter]);
   areaCounter ++;
 }
+
 // test
-//3141592
-function guessAdder(sliderValue) {
-  // sliderValue = parseInt(sliderValue)
-  // var piArray = holder.slice('');
-  // console.log(sliderValue);
-  // console.log(sliderValue+1);
-  // console.log(sliderValue-1);
-  // var leftString = holder.slice((sliderValue-4),(sliderValue-1));
-  // var rightString = holder.slice((sliderValue),(sliderValue+3));
-  // console.log(rightString);
-  // document.getElementById("leftGuess").innerHTML = leftString;
-  // document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
-  // document.getElementById("rightGuess").innerHTML = rightString;
+function bigTest(){
+  var arrayOfPi = holder.slice('');
+  // console.log(holder);
+  function numberConverter(numberGiven){
+    var currentValueNow;
+    if(i==0){
+      currentValueNow = 'zero';
+    }
+    else if(numberGiven==1){
+      currentValueNow = 'one';
+    }
+    else if(numberGiven==2){
+      currentValueNow = 'two';
+    }
+    else if(numberGiven==3){
+      currentValueNow = 'three';
+    }
+    else if(numberGiven==4){
+      currentValueNow = 'four';
+    }
+    else if(numberGiven==5){
+      currentValueNow = 'five';
+    }
+    else if(numberGiven==6){
+      currentValueNow = "six";
+    }
+    else if(numberGiven==7){
+      currentValueNow = "seven";
+    }
+    else if(numberGiven==8){
+      currentValueNow = "eight";
+    }
+    else if(numberGiven == null){
+      currentValueNow = 'zero';
+    }
+    else {
+      currentValueNow = "nine";
+    }
+    return currentValueNow;
+  }
 
 
-//Updating slider value dynamically
+  class connectionsToNumber{
+    constructor(){
+      this.zero = 0;
+      this.one = 0;
+      this.two = 0;
+      this.three = 0;
+      this.four = 0;
+      this.five = 0;
+      this.six = 0;
+      this.seven = 0;
+      this.eight = 0;
+      this.nine = 0;
 
+    }
+  }
+
+  class allNumbers{
+    constructor(){
+      this.zero = new connectionsToNumber();
+      this.one = new connectionsToNumber();
+      this.two = new connectionsToNumber();
+      this.three = new connectionsToNumber();
+      this.four = new connectionsToNumber();
+      this.five = new connectionsToNumber();
+      this.six = new connectionsToNumber();
+      this.seven = new connectionsToNumber();
+      this.eight = new connectionsToNumber();
+      this.nine = new connectionsToNumber();
+    }
+  }
+  var all_numbers = new allNumbers();
+  console.log(all_numbers.nine.nine);
+  console.log(holder);
+  console.log(arrayOfPi);
+  for (var j = 0;j<arrayOfPi.length;j++){
+
+    console.log(arrayOfPi[j]);
+    console.log(arrayOfPi[j+1]);
+    var currentValue;
+    var nextValue;
+    //iterating through the piArray
+    //look at number and access its object class
+    currentIndex = arrayOfPi[j];
+    console.log(currentIndex);
+    var nextNumber = j +1;
+    nextIndex = arrayOfPi[nextNumber];
+    console.log(nextIndex);
+    currentValue = numberConverter(currentIndex);
+    nextValue = numberConverter(nextIndex);
+    console.log(currentValue);
+    console.log(nextValue);
+    all_numbers.currentValue.nextValue = (all_numbers.currentValue.nextValue) +1;
+  }
+  console.log(all_numbers);
 
 }
+
+// endtest
 
 window.addEventListener('load', () => {
   var slider = document.getElementById("formControlRange");
@@ -137,24 +217,24 @@ window.addEventListener('load', () => {
     // console.log(sliderValue+1);
     // console.log(sliderValue-1);
     var leftString = holder.slice((sliderValue-4),(sliderValue-1));
+    console.log(leftString);
     var rightString = holder.slice((sliderValue),(sliderValue+3));
     console.log(rightString);
+    if((leftString) == ''){
+      leftString = "xxx";
+    }
+    if(rightString == ''){
+      rightString = "xxx";
+    }
     document.getElementById("leftGuess").innerHTML = leftString;
     document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
     document.getElementById("rightGuess").innerHTML = rightString;
 
   }
 
-
-
   document.querySelector('#pi_numbers').addEventListener("click", () => {
     bigTypeWriter();
-  });
-  document.querySelector('#secondtest').addEventListener("click", () => {
-    var sliderValue = document.getElementById("formControlRange").value;
-    guessAdder(sliderValue);
-    // document.getElementById("teststuff").innerHTML = sliderValue;
-
+    bigTest();
   });
   document.querySelector('#polarAdder').addEventListener("click", () => {
     barAdder();
@@ -162,11 +242,12 @@ window.addEventListener('load', () => {
   document.querySelector('#pi_number').addEventListener("click", () => {
     dataAddertest();
   });
-  document.querySelector('#first').addEventListener("mouseover", changeOne);
-  document.querySelector('#second').addEventListener("mouseover", changeTwo);
-  document.querySelector('#third').addEventListener("mouseover", changeThree);
-  document.querySelector('#fourth').addEventListener("mouseover", changeFour);
-  document.addEventListener('aos:in', ({ detail }) => {
-  console.log('animated in', detail);
-});
+  // document.querySelector('#first').addEventListener("mouseover", changeOne);
+  // document.querySelector('#second').addEventListener("mouseover", changeTwo);
+  // document.querySelector('#third').addEventListener("mouseover", changeThree);
+  // document.querySelector('#fourth').addEventListener("mouseover", changeFour);
+  document.addEventListener('aos:in:super-duper', ({ detail }) => {
+    // console.log('animated in', detail);
+    setTimeout(bigTypeWriter,1500);
+  });
 });
