@@ -11,7 +11,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/styles/main.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="/static/script.js"></script>
+    <script type="text/javascript" src="/static/script.js"></script>
+    <script type="text/javascript" src="/static/piObjectParser.js"></script>
+
 
      <title>Pi Visualization</title>
   </head>
@@ -41,10 +43,10 @@
       </div>
     </div>
 
-<div id="piBackground" class="container-fluid" style="background:white;overflow:hidden;">
+<div id="piBackground" class="container-fluid" style="background:rgba(254, 254, 255, 1);overflow:hidden;">
   <div class="row" style="height:100vh;">
-    <div class="col align-self-center"  data-aos="fade-up" data-aos="fade-out" style="text-align:center;" id="trigger-right">
-      <h1 id="pi_numbers" class="text-break" style="font-size:2.7;">This is Pi like you've seen it before.</h1>
+    <div class="col align-self-center"  data-aos="fade-up" data-aos-id="super-duper" style="text-align:center;" id="trigger-right">
+      <h1 id="pi_numbers" class="text-break" style="font-size:100;">This is Pi like you've seen it before.</h1>
     </div>
   </div>
   <!-- potentially bring this functionality back -->
@@ -63,12 +65,11 @@
   </div> -->
 </div>
 
-<div class="container-fluid" style="background:rgb(0, 24, 69);">
-  <div class="row" style="height:100vh">
+<div class="container-fluid" style="background:rgba(254, 209, 140, 1);">
+  <div class="row" style="height:100vh;">
     <div class="col align-self-center">
-
       <div class="row">
-        <div class="col">
+        <div class="col" style="height:90vh;">
             <canvas id="myChart"></canvas>
         </div>
       </div>
@@ -81,25 +82,30 @@
   </div>
 </div>
 
-<div class="container-fluid" style="height:100vh;background:rgb(34, 76, 135);">
-  <div class="row">
-    <div class="col">
-      <div class="chart-container">
+<div class="container-fluid" style="background:rgba(124, 144, 160, 1);">
+  <div class="row" style="height:100vh">
+    <div class="col align-self-center">
+      <div class="row">
+        <div class="col" style="height:90vh;">
           <canvas id="secondChart"></canvas>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row align-items-end">
-    <div class="col" style="text-align:center;">
-      <button type="button" id="polarAdder" class="btn btn-primary">Just Click Here</button>
+      <div class="row">
+        <div class="col" style="text-align:center;">
+          <button type="button" id="polarAdder" class="btn btn-primary">Just Click Here</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Will add functionality to guess a number of Pi at a certain range -->
-<div class="container-fluid" style="background:black;color:white">
+<div class="container-fluid" style="background:rgba(49, 54, 56, 1);color:white">
   <div class="row" style="height:100vh">
+    <div class="col align-self-center">
+      <p style="text-align:center;"><span id="leftGuess" data-aos="fade" data-aos-duration="1400" style="font-size:60px;color:rgb(99, 99, 99);">223</span><span data-aos="fade" id="middleGuess" style="font-size:100px;">3</span><span data-aos="fade;" data-aos-duration="1400" id="rightGuess" style="font-size:60px;color:rgb(99, 99, 99);">343</span>
+      </p>
+    </div>
     <div class="col align-self-center">
       <div class="row">
         <div class="col align-self-center">
@@ -118,14 +124,21 @@
         </div>
       </div>
     </div>
-    <div class="col align-self-center">
-
-      <p style="text-align:center;"><span id="leftGuess" style="font-size:60px;opacity:.5">223</span><span id="middleGuess" style="font-size:100px;">3</span><span id="rightGuess" style="font-size:60px;opacity:.5">343</span>
-      </p>
-
-    </div>
   </div>
 </div>
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      Curious about a specific value of Pi?
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+        enter any value to find the number at pi
+      </div>
+  </div>
+</div> -->
 <!-- Begin Script Libraries -->
 <script> var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -159,12 +172,13 @@ var chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {
+      maintainAspectRatio: false,
       legend: {
         display: false,
       },
       animation:{
         duration:5000,
-      }
+      },
     }
 });
 </script>
@@ -174,25 +188,27 @@ var chart = new Chart(ctx, {
        data: {
         datasets: [{
             data: [3,1,4,],
-        //     backgroundColor: function(context) {
-        //       var index = context.dataIndex;
-        //       var value = context.dataset.data[index];
-        //       return value == 1 ? 'black' :
-        //       value == 2 ? 'black':
-        //       value == 3 ? 'white':
-        //       value == 4 ? 'white':
-        //       value == 5 ? 'yellow':
-        //       value == 6 ? 'yellow':
-        //       value == 7 ? 'yellow':
-        //       value == 8 ? 'yellow':
-        //       value == 9 ? 'yellow':
-        //       index % 2 ? 'blue' : 'green';
-        // },
+            backgroundColor: function(context) {
+              var index = context.dataIndex;
+              var value = context.dataset.data[index];
+              return value == 1 ? 'rgba(240, 157, 81, 1)' :
+              value == 2 ? 'rgba(49, 54, 56, 1)':
+              value == 3 ? 'rgba(224, 223, 213, 1)':
+              value == 4 ? 'rgba(232, 233, 235, 1)':
+              value == 5 ? 'rgba(240, 101, 67, 1)':
+              value == 6 ? 'rgba(240, 157, 81, 1)':
+              value == 7 ? 'rgba(49, 54, 56, 1)':
+              value == 8 ? 'rgba(224, 223, 213, 1)':
+              value == 9 ? 'rgba(232, 233, 235, 1)':
+              index % 2 ? 'blue' : 'green';
+        },
+        borderWidth: 0,
         }],
     },
 
        type: 'polarArea',
        options: {
+         maintainAspectRatio: false,
          legend: {
            display:false,
          },
