@@ -52,9 +52,23 @@ function piJoiner(){
 var i = 0;
 var speed = 30;
 
+function numberGlow(currentId){
+    document.getElementById('piBackground').style.background = "black";
+  var originalLetter = document.getElementById(currentId).innerHTML;
+  for(var m=0;m<=1000;m++){
+     var comparison = document.getElementById(m).innerHTML;
+     if(comparison == originalLetter){
+      document.getElementById(m).style.color = "white";
+     }
+  }
+}
+
+
 function typeWriter() {
+  var onclick = "onclick='numberGlow(" + i + ")'"
+  var styleClick = "style='color:black;'"
   if (i < visualPi.length) {
-    document.getElementById("pi_numbers").innerHTML += visualPi.charAt(i);
+    document.getElementById("pi_numbers").innerHTML += "<span " + styleClick+onclick +"id=" + i + ">" + visualPi.charAt(i) + "</span>";
     i++;
     setTimeout(typeWriter, speed);
   }
@@ -188,18 +202,12 @@ function bigTest(){
     //iterating through the piArray
     //look at number and access its object class
     currentIndex = arrayOfPi[j];
-    console.log(currentIndex);
     var nextNumber = j +1;
     nextIndex = arrayOfPi[nextNumber];
-    console.log(nextIndex);
     currentValue = numberConverter(currentIndex);
     nextValue = numberConverter(nextIndex);
-    console.log(currentValue);
-    console.log(nextValue);
     all_numbers.currentValue.nextValue = (all_numbers.currentValue.nextValue) +1;
   }
-  console.log(all_numbers);
-
 }
 
 // endtest
@@ -213,18 +221,15 @@ window.addEventListener('load', () => {
     output.innerHTML = this.value;
     sliderValue = parseInt(this.value);
     var piArray = holder.slice('');
-    console.log(sliderValue);
     // console.log(sliderValue+1);
     // console.log(sliderValue-1);
     var leftString = holder.slice((sliderValue-4),(sliderValue-1));
-    console.log(leftString);
     var rightString = holder.slice((sliderValue),(sliderValue+3));
-    console.log(rightString);
     if((leftString) == ''){
-      leftString = "xxx";
+      leftString = "";
     }
     if(rightString == ''){
-      rightString = "xxx";
+      rightString = "...";
     }
     document.getElementById("leftGuess").innerHTML = leftString;
     document.getElementById("middleGuess").innerHTML = piArray[sliderValue-1];
