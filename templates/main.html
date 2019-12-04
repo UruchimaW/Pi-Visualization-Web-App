@@ -20,7 +20,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand">
-        <img src="/static/PiLogo.png" class="d-inline-block align-top" width="30" height="30" alt="">
+        <!-- <img src="/static/PiLogo.png" class="d-inline-block align-top" width="30" height="30" alt=""> -->
 
         Pi Visualization</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,12 +86,15 @@
   <div class="row" style="height:100vh">
     <div class="col align-self-center">
       <div class="row">
+        <div style="z-index:30;position:absolute;" data-aos="fade">
+          <h1 style="font-size:90px;">Radial</h1>
+        </div>
         <div class="col" style="height:90vh;">
           <canvas id="secondChart"></canvas>
         </div>
       </div>
       <div class="row">
-        <div class="col" style="text-align:center;">
+        <div class="col" style="text-align:right;">
           <button type="button" id="polarAdder" class="btn btn-primary">Just Click Here</button>
         </div>
       </div>
@@ -127,6 +130,14 @@
   </div>
 </div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+
 <!-- <div class="container-fluid">
   <div class="row">
     <div class="col">
@@ -155,15 +166,15 @@ var chart = new Chart(ctx, {
             backgroundColor: function(context) {
               var index = context.dataIndex;
               var value = context.dataset.data[index];
-              return value == 1 ? 'orange' :
-              value == 2 ? 'blue':
-              value == 3 ? 'purple':
-              value == 4 ? 'rgb(221, 122, 51)':
-              value == 5 ? 'brown':
-              value == 6 ? 'brown':
-              value == 7 ? 'brown':
-              value == 8 ? 'brown':
-              value == 9 ? 'brown':
+              return value == 1 ? 'rgba(221, 110, 66, 1)' :
+              value == 2 ? 'rgba(79, 109, 122, 1)':
+              value == 3 ? 'rgba(192, 214, 223, 1)':
+              value == 4 ? 'rgba(234, 234, 234, 1)':
+              value == 5 ? 'rgba(221, 110, 66, 1)':
+              value == 6 ? 'rgba(79, 109, 122, 1)':
+              value == 7 ? 'rgba(192, 214, 223, 1)':
+              value == 8 ? 'rgba(234, 234, 234, 1)':
+              value == 9 ? 'rgba(221, 110, 66, 1)':
               index % 2 ? 'blue' : 'green';
         }
         }
